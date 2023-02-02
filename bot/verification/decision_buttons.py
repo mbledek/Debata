@@ -86,7 +86,7 @@ class ApproveQuestButton(discord.ui.Button):
             return
 
         # Writing the question in a formatted way for OBS/VMIX
-        onlyfiles = [f for f in os.listdir(os.path.join(path, "questions")) if os.path.isfile(os.path.join("questions", f))]
+        onlyfiles = [f for f in os.listdir(os.path.join(path, "questions")) if os.path.isfile(os.path.join(path, "questions", f))]
         with open(os.path.join(path, "questions", f"{len(onlyfiles) + 1}.txt"), "w", encoding="utf-8") as f:
             file_text = interaction.message.embeds[0].description.replace("\n", " ").replace("*", "")
             file_text = file_text.replace("Uczeń - ", "")
