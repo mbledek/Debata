@@ -18,7 +18,7 @@ class ApproveButton(discord.ui.Button):
     async def callback(self, interaction: discord.Interaction):
         if self.guild.get_role(VERIFIER_ROLE) not in interaction.user.roles:
             await interaction.response.send_message(':x: **Nie masz uprawnień by weryfikować użytkowników!**', ephemeral=True)
-            logger.warning("Nie masz uprawnień by weryfikować użytkowników (nie mam jak sprawdzić kim jesteś)")
+            logger.warning(f"Nie masz uprawnień by weryfikować pytania - {interaction.user.display_name}")
             return
 
         user = self.guild.get_member(self.user_id)
@@ -50,7 +50,7 @@ class DenyButton(discord.ui.Button):
     async def callback(self, interaction: discord.Interaction):
         if self.guild.get_role(VERIFIER_ROLE) not in interaction.user.roles:
             await interaction.response.send_message(':x: **Nie masz uprawnień by weryfikować użytkowników!**', ephemeral=True)
-            logger.warning("Nie masz uprawnień by weryfikować użytkowników (nie mam jak sprawdzić kim jesteś)")
+            logger.warning(f"Nie masz uprawnień by weryfikować pytania - {interaction.user.display_name}")
             return
 
         user = self.guild.get_member(self.user_id)
